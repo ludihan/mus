@@ -1,4 +1,4 @@
 create table if not exists playlist (
-    user_id integer unique not null,
+    user_id integer not null references user(rowid),
     name text not null
 );

@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS playlist (
+    id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES "user"(id),
+    name TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "user" (
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(16) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS track (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    artist TEXT NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS playlist_track (
+    playlist_id INTEGER NOT NULL REFERENCES playlist(id),
+    track_id INTEGER NOT NULL REFERENCES track(id)
+);
